@@ -10,6 +10,7 @@ import model.BasicStatsModel;
 import gui.view.CountView;
 import gui.view.MeanView;
 import gui.view.MedianView;
+import gui.view.NumbersView;
 import gui.view.View;
 
 
@@ -30,9 +31,9 @@ public class BasicStatsGUI implements View
     CountView countView = new CountView();
 	MeanView meanView = new MeanView();
 	MedianView medianView = new MedianView();
-    private JTextArea jtaNumbers;
+    NumbersView numbersView = new NumbersView();
     private JFrame jfMain = new JFrame(APP_TITLE);
-
+	
     public BasicStatsGUI() {	
 	// Create the main frame of the application, and set size and position
 	jfMain.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -41,7 +42,7 @@ public class BasicStatsGUI implements View
 	
 	// Panel that shows stats about the numbers
 	JPanel jpStats = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	
+
 	jpStats.add(new JLabel(countView.getLabel()));
 	jpStats.add(countView.getComponent());
 	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
@@ -55,9 +56,7 @@ public class BasicStatsGUI implements View
 	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
 	// TextArea that shows all the numbers
-	jtaNumbers = new JTextArea(10,50);
-	jtaNumbers.setEditable(false);
-	jfMain.getContentPane().add(jtaNumbers, BorderLayout.SOUTH);
+	jfMain.getContentPane().add(numbersView.getComponent(), BorderLayout.SOUTH);
 	
 	
 	// Panel with a text field/button to enter numbers and a button to reset the application
@@ -73,6 +72,7 @@ public class BasicStatsGUI implements View
 		    update(model);
 		}
 	    });
+
 	JTextField jtfNumber = new JTextField(5);
 	JButton jbAdd = new JButton("Add number");
 	jbAdd.addActionListener(new ActionListener() {
@@ -96,15 +96,14 @@ public class BasicStatsGUI implements View
 
     public void update(BasicStatsModel model) {
 	if (model.getArrayDouble().length == 0) {
-	    jtaNumbers.setText("");
+	    numbersView.reset();
 	    countView.reset();
 	    medianView.reset();
 	    meanView.reset();
 	}
 	else {
 	    // Update the displayed list of numbers
-	    double num = model.getArrayDouble()[model.getArrayDouble().length - 1];
-	    jtaNumbers.append(num + ",");
+	    numbersView.update(model);
 	    
 	    // Compute and set the count
 	    countView.update(model);
