@@ -78,4 +78,29 @@ public class BasicStats {
 
       return mode;
     }
+
+    /**
+     * Compute the maximum value in an array of numbers.
+     * 
+     * @param numbers An array of doubles that contains the list of numbers
+     * @exception IllegalArgumentException if the given array is null or when the array length is zero
+     * @return The maximum value of all the numbers provided
+     */
+    public static double maximum(double ... numbers) {
+      double maxNum = 0;
+      if(numbers == null) {
+        throw new IllegalArgumentException("The array must be non-null.");
+      }
+
+      if(numbers.length == 0) {
+        throw new IllegalArgumentException("The array must be of length non-zero.");
+      }
+
+      for (double num: numbers) {
+        if(num > maxNum) {
+          maxNum = num;
+        }
+      }
+      return maxNum;
+  }
 }

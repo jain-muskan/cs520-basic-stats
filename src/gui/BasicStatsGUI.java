@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 import model.BasicStatsModel;
 import gui.view.CountView;
+import gui.view.MaxNumberView;
 import gui.view.MeanView;
 import gui.view.MedianView;
 import gui.view.NumbersView;
@@ -31,9 +32,10 @@ public class BasicStatsGUI implements View
     CountView countView = new CountView();
 	MeanView meanView = new MeanView();
 	MedianView medianView = new MedianView();
+	MaxNumberView maxNumberView = new MaxNumberView();
     NumbersView numbersView = new NumbersView();
     private JFrame jfMain = new JFrame(APP_TITLE);
-	
+
     public BasicStatsGUI() {	
 	// Create the main frame of the application, and set size and position
 	jfMain.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,6 +55,10 @@ public class BasicStatsGUI implements View
 	
 	jpStats.add(new JLabel(meanView.getLabel()));
 	jpStats.add(meanView.getComponent());
+	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
+
+	jpStats.add(new JLabel(maxNumberView.getLabel()));
+	jpStats.add(maxNumberView.getComponent());
 	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
 	// TextArea that shows all the numbers
@@ -100,6 +106,7 @@ public class BasicStatsGUI implements View
 	    countView.reset();
 	    medianView.reset();
 	    meanView.reset();
+		maxNumberView.reset();
 	}
 	else {
 	    // Update the displayed list of numbers
@@ -113,6 +120,9 @@ public class BasicStatsGUI implements View
 	    
 	    // Compute and set the median
 	    medianView.update(model);    
+
+		// Compute and set the maximum number
+		maxNumberView.update(model);
 	}
     }
 
@@ -120,5 +130,13 @@ public class BasicStatsGUI implements View
 	// Show the frame
 	jfMain.setVisible(true);
     }
+
+	public JFrame getComponent() {
+		return jfMain;
+	}
+
+	public BasicStatsModel getModel() {
+		return model;
+	}
     
 }

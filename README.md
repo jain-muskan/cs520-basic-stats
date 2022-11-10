@@ -29,5 +29,6 @@ Program features:
 * Computes the mean of the set of numbers.
 * Computes the median of the set of numbers.
 * Computes the mode of the set of numbers.
+* Computes the maximum of the set of numbers.
 * Resets the application state to display no numbers and clear all values.
     

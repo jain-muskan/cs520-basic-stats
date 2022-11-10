@@ -32,6 +32,7 @@ public class BasicStatsModel
 	    throw new IllegalArgumentException("The number must be non-null.");
 	}
 
+    
 	this.data.add(number);
     }
 
