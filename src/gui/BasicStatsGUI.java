@@ -90,13 +90,11 @@ public class BasicStatsGUI implements View
 				model.addNumber(num);
 				update(model);
 			} catch (NullPointerException ne) {
-				//JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Error message: " + ne.getMessage());
 				// Clear the input number field
 				jtfNumber.setText("");
 
 			} catch (NumberFormatException ne) {
-				//JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Error message: " + ne.getMessage());
 				// Clear the input number field
 				jtfNumber.setText("");
@@ -167,5 +165,9 @@ public class BasicStatsGUI implements View
     
 	public void setInput(double num) {
 		jtfNumber.setText(num+"");
+	}
+
+	public JTextField getInputText() {
+		return jtfNumber;
 	}
 }

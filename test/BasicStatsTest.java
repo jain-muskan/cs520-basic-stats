@@ -2,6 +2,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 
@@ -189,7 +190,32 @@ public class BasicStatsTest {
     }
 
     @Test
-    public void testNumberAdd() {
+    public void testNumberAddButton() {
+      BasicStatsGUI gui = new BasicStatsGUI();
+      gui.setInput(2.0);
+
+      JButton jbAdd= gui.getAddButton();
+      jbAdd.doClick();
+      BasicStatsModel model = gui.getModel();
+      assertTrue(Arrays.equals(new double[] {2}, model.getArrayDouble()));
+    }
+
+    @Test
+    public void testResetButton() {
+      BasicStatsGUI gui = new BasicStatsGUI();
+      BasicStatsModel model = gui.getModel();
+      model.addNumber(2.0);
+      assertTrue(Arrays.equals(new double[] {2}, model.getArrayDouble()));
+      
+      JButton reset = gui.getResetButton();
+      reset.doClick();
+      assertEquals("Reset", reset.getText());
+      assertTrue(Arrays.equals(new double[] {}, model.getArrayDouble()));
+
+    }
+
+    @Test
+    public void testNumberAddMethod() {
       //Adding a positive number
       BasicStatsModel model = new BasicStatsModel();
       model.addNumber(1.0);
@@ -230,7 +256,7 @@ public class BasicStatsTest {
     }
 
     @Test
-    public void testNegativeMaximum() {
+    public void testNegativeAndZeroMaximum() {
       //Maximum should be 21
       double[] numbers = {-9, -11, -1, -4, -7, -21};
       double max = BasicStats.maximum(numbers);
@@ -322,5 +348,16 @@ public class BasicStatsTest {
       double[] numbers5 = {};
       mode   = BasicStats.mode(numbers5);
       assertEquals (0, mode, EPS);
+    }
+
+    @Test
+    public void testBug() {
+      BasicStatsGUI gui = new BasicStatsGUI();
+      gui.setInput(2.0);
+      assertEquals("2.0", gui.getInputText().getText());
+
+      JButton reset= gui.getResetButton();
+      reset.doClick();
+      assertEquals("", gui.getInputText().getText());
     }
 }
