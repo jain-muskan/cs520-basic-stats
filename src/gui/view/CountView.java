@@ -53,5 +53,15 @@ public class CountView implements View {
      */
     public void reset() {
 		jtfCount.setText("");
+        count = 0;
 	}
+
+    /**
+	 * Return the count value.
+	 * 
+	 * @return count value of the numbers.
+	 */
+	public double getCount() {
+        return count;
+    }
 }

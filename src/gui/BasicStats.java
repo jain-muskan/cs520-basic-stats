@@ -87,7 +87,7 @@ public class BasicStats {
      * @return The maximum value of all the numbers provided
      */
     public static double maximum(double ... numbers) {
-      double maxNum = 0;
+      double maxNum = Double.NEGATIVE_INFINITY;
       if(numbers == null) {
         throw new IllegalArgumentException("The array must be non-null.");
       }

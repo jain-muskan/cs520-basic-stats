@@ -54,5 +54,15 @@ public class MedianView implements View {
      */
     public void reset() {
 		jtfMedian.setText("");
+		median = 0;
 	}
+
+	/**
+	 * Return the median value.
+	 * 
+	 * @return median value of the numbers.
+	 */
+	public double getMedian() {
+        return median;
+    }
 }

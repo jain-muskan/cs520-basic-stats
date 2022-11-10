@@ -35,7 +35,9 @@ public class BasicStatsGUI implements View
 	MaxNumberView maxNumberView = new MaxNumberView();
     NumbersView numbersView = new NumbersView();
     private JFrame jfMain = new JFrame(APP_TITLE);
-	JTextField jtfNumber;
+	private JButton jbAdd;
+	private JButton jbReset;
+	private JTextField jtfNumber;
 
     public BasicStatsGUI() {	
 	// Create the main frame of the application, and set size and position
@@ -64,7 +66,7 @@ public class BasicStatsGUI implements View
 	
 	
 	// Panel with a text field/button to enter numbers and a button to reset the application
-	JButton jbReset = new JButton("Reset");
+	jbReset = new JButton("Reset");
 	jbReset.addActionListener(new ActionListener() {
 		// The interface ActionListener defines a call-back method actionPerformed,
 		// which is invoked if the user interacts with the GUI component -- in this
@@ -78,7 +80,7 @@ public class BasicStatsGUI implements View
 	    });
 
 	jtfNumber = new JTextField(5);
-	JButton jbAdd = new JButton("Add number");
+	jbAdd = new JButton("Add number");
 	jbAdd.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    // Parse input and add number to the ArrayList
@@ -88,13 +90,13 @@ public class BasicStatsGUI implements View
 				model.addNumber(num);
 				update(model);
 			} catch (NullPointerException ne) {
-				JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+				//JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Error message: " + ne.getMessage());
 				// Clear the input number field
 				jtfNumber.setText("");
 
 			} catch (NumberFormatException ne) {
-				JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+				//JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Error message: " + ne.getMessage());
 				// Clear the input number field
 				jtfNumber.setText("");
@@ -154,5 +156,16 @@ public class BasicStatsGUI implements View
 	public BasicStatsModel getModel() {
 		return model;
 	}
+
+	public JButton getAddButton() {
+		return jbAdd;
+	}
+
+	public JButton getResetButton() {
+		return jbReset;
+	}
     
+	public void setInput(double num) {
+		jtfNumber.setText(num+"");
+	}
 }

@@ -14,7 +14,7 @@ public class MeanView implements View {
      * Create a simple gui for the MeanView and do basic initialization.
      */
 	public MeanView() {
-        mean = 0;
+        mean = 0.0;
         label = "Mean";
 		jtfMean = new JTextField(5);
 		jtfMean.setEditable(false);
@@ -54,5 +54,15 @@ public class MeanView implements View {
      */
     public void reset() {
 		jtfMean.setText("");
+        mean = 0;
 	}
+
+    /**
+	 * Return the mean value.
+	 * 
+	 * @return mean value of the numbers.
+	 */
+	public double getMean() {
+        return mean;
+    }
 }
