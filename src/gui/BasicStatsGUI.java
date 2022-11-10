@@ -35,6 +35,7 @@ public class BasicStatsGUI implements View
 	MaxNumberView maxNumberView = new MaxNumberView();
     NumbersView numbersView = new NumbersView();
     private JFrame jfMain = new JFrame(APP_TITLE);
+	JTextField jtfNumber;
 
     public BasicStatsGUI() {	
 	// Create the main frame of the application, and set size and position
@@ -47,15 +48,12 @@ public class BasicStatsGUI implements View
 
 	jpStats.add(new JLabel(countView.getLabel()));
 	jpStats.add(countView.getComponent());
-	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
 	jpStats.add(new JLabel(medianView.getLabel()));
 	jpStats.add(medianView.getComponent());
-	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
 	jpStats.add(new JLabel(meanView.getLabel()));
 	jpStats.add(meanView.getComponent());
-	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 
 	jpStats.add(new JLabel(maxNumberView.getLabel()));
 	jpStats.add(maxNumberView.getComponent());
@@ -79,7 +77,7 @@ public class BasicStatsGUI implements View
 		}
 	    });
 
-	JTextField jtfNumber = new JTextField(5);
+	jtfNumber = new JTextField(5);
 	JButton jbAdd = new JButton("Add number");
 	jbAdd.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -102,6 +100,7 @@ public class BasicStatsGUI implements View
 
     public void update(BasicStatsModel model) {
 	if (model.getArrayDouble().length == 0) {
+		jtfNumber.setText("");
 	    numbersView.reset();
 	    countView.reset();
 	    medianView.reset();
@@ -109,6 +108,9 @@ public class BasicStatsGUI implements View
 		maxNumberView.reset();
 	}
 	else {
+		// Clear the input number field
+		jtfNumber.setText("");
+
 	    // Update the displayed list of numbers
 	    numbersView.update(model);
 	    
