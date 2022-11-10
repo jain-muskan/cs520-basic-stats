@@ -83,12 +83,26 @@ public class BasicStatsGUI implements View
 		public void actionPerformed(ActionEvent e) {
 		    // Parse input and add number to the ArrayList
 		    
-		    Double num = Double.parseDouble(jtfNumber.getText());
-		    model.addNumber(num);
+			try {
+				Double num = Double.parseDouble(jtfNumber.getText());
+				model.addNumber(num);
+				update(model);
+			} catch (NullPointerException ne) {
+				JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Error message: " + ne.getMessage());
+				// Clear the input number field
+				jtfNumber.setText("");
 
-		    update(model);
+			} catch (NumberFormatException ne) {
+				JOptionPane.showMessageDialog (jfMain, "The input must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Error message: " + ne.getMessage());
+				// Clear the input number field
+				jtfNumber.setText("");
+
+			}
+		    
 		}
-	    });
+	});
 	JPanel jpInput = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	jpInput.add(jtfNumber);
 	jpInput.add(jbAdd);
