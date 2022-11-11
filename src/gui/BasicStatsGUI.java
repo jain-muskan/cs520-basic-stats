@@ -207,4 +207,24 @@ public class BasicStatsGUI implements View
 	public JTextField getInputText() {
 		return jtfNumber;
 	}
+
+	public MeanView getMeanView() {
+		return meanView;
+	}
+
+	public MedianView getMedianView() {
+		return medianView;
+	}
+
+	public CountView getCountView() {
+		return countView;
+	}
+
+	public MaxNumberView getMaxNumberView() {
+		return maxNumberView;
+	}
+
+	public NumbersView getNumbersView() {
+		return numbersView;
+	}
 }

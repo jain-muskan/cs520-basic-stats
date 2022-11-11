@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import gui.BasicStats;
 import gui.BasicStatsGUI;
 import gui.view.CountView;
+import gui.view.MaxNumberView;
 import gui.view.MeanView;
 import gui.view.MedianView;
 import gui.view.NumbersView;
@@ -210,7 +211,18 @@ public class BasicStatsTest {
       reset.doClick();
       assertEquals("Reset", reset.getText());
       assertTrue(Arrays.equals(new double[] {}, model.getArrayDouble()));
+      
+      MeanView meanView = gui.getMeanView();
+      MedianView medianView = gui.getMedianView();
+      CountView countView = gui.getCountView();
+      MaxNumberView maxView = gui.getMaxNumberView();
+      NumbersView numbersView = gui.getNumbersView();
 
+      assertEquals("", meanView.getComponent().getText());
+      assertEquals("", medianView.getComponent().getText());
+      assertEquals("", countView.getComponent().getText());
+      assertEquals("", maxView.getComponent().getText());
+      assertEquals("", numbersView.getComponent().getText());
     }
 
     @Test
