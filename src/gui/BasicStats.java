@@ -18,11 +18,18 @@ public class BasicStats {
      * @return The mean of all the numbers provided
      */
     public static double mean(double ... numbers) {
-        double sum = 0;
-        for (double num : numbers) {
-            sum += num;
-        }
-        return sum / numbers.length;
+      if(numbers == null) {
+        throw new IllegalArgumentException("The array must be non-null.");
+      }
+
+      if(numbers.length == 0) {
+        throw new IllegalArgumentException("The array must be of length non-zero.");
+      }
+      double sum = 0;
+      for (double num : numbers) {
+          sum += num;
+      }
+      return sum / numbers.length;
     }
 
     /**
@@ -32,6 +39,14 @@ public class BasicStats {
      * @return The median of all the numbers provided
      */
     public static double median(double ... numbers) {
+      if(numbers == null) {
+        throw new IllegalArgumentException("The array must be non-null.");
+      }
+
+      if(numbers.length == 0) {
+        throw new IllegalArgumentException("The array must be of length non-zero.");
+      }
+
       Arrays.sort(numbers);
 
       int size = numbers.length;
@@ -56,6 +71,14 @@ public class BasicStats {
      * @return The mode of all the numbers provided
      */
     public static double mode(double ... numbers) {
+      if(numbers == null) {
+        throw new IllegalArgumentException("The array must be non-null.");
+      }
+
+      if(numbers.length == 0) {
+        throw new IllegalArgumentException("The array must be of length non-zero.");
+      }
+      
       double mode = 0.0;
       int modeCount = 0;
 

@@ -31,4 +31,12 @@ Program features:
 * Computes the mode of the set of numbers.
 * Computes the maximum of the set of numbers.
 * Resets the application state to display no numbers and clear all values.
+* Does input validation for every added number.
+* Does input validation for mean/median/mode/maximum number calculation.
+
+Collaborators:
+* Avani Jindal
+* Amulya Chetlapalli
+* Snehal Deepak Thakur
+* Sakshi Bhalerao
     

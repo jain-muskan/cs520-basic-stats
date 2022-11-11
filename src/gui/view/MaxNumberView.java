@@ -6,16 +6,15 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 public class MaxNumberView implements View {
-    private double maxNum;
-    private String label;
+    private double maxNum = Double.NEGATIVE_INFINITY;
+    private String label = "Max Number";
 	private JTextField jtfMaxNum;
 
     /*
      * Create a simple gui for the MaxNumberView and do basic initialization.
      */
 	public MaxNumberView() {
-        maxNum = 0;
-        label = "Max Number";
+        maxNum = Double.NEGATIVE_INFINITY;
 		jtfMaxNum = new JTextField(5);
 		jtfMaxNum.setEditable(false);
 	}
@@ -54,5 +53,6 @@ public class MaxNumberView implements View {
      */
     public void reset() {
 		jtfMaxNum.setText("");
+        maxNum = Double.NEGATIVE_INFINITY;
 	}
 }

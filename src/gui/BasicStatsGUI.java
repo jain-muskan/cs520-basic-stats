@@ -100,7 +100,6 @@ public class BasicStatsGUI implements View
 				jtfNumber.setText("");
 
 			}
-		    
 		}
 	});
 	JPanel jpInput = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -112,6 +111,11 @@ public class BasicStatsGUI implements View
 	jfMain.getContentPane().add(jpInput, BorderLayout.NORTH);
     }
 
+	/**
+	 * Update the view based on model.
+	 * 
+	 * @param model The model representing the BasicStatsModel
+	 */
     public void update(BasicStatsModel model) {
 	if (model.getArrayDouble().length == 0) {
 		jtfNumber.setText("");
@@ -142,31 +146,64 @@ public class BasicStatsGUI implements View
 	}
     }
 
+	/**
+	 * Make the JFrame visible.
+	 */
     public void show() {
 	// Show the frame
 	jfMain.setVisible(true);
     }
 
+	/**
+	 * Return the main JFrame component.
+	 * 
+	 * @return The jftMain representing the main JFrame
+	 */
 	public JFrame getComponent() {
 		return jfMain;
 	}
 
+	/**
+	 * Return the BasicStatsModel.
+	 * 
+	 * @return The model representing the BasicStatsModel
+	 */
 	public BasicStatsModel getModel() {
 		return model;
 	}
 
+	/**
+	 * Return the jbAdd button.
+	 * 
+	 * @return The jbAdd representing the add number button
+	 */
 	public JButton getAddButton() {
 		return jbAdd;
 	}
 
+	/**
+	 * Return the jbReset button.
+	 * 
+	 * @return The jbReset representing the reset button
+	 */
 	public JButton getResetButton() {
 		return jbReset;
 	}
     
+	/**
+	 * Set the jftNumber field with the num provided.
+	 * 
+	 * @param num A double representing the number to set
+	 */
 	public void setInput(double num) {
 		jtfNumber.setText(num+"");
 	}
 
+	/**
+	 * Return the jftNumber field.
+	 * 
+	 * @return The jftNumber representing the input text
+	 */
 	public JTextField getInputText() {
 		return jtfNumber;
 	}

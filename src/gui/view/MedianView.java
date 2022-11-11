@@ -6,8 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 public class MedianView implements View {
-    private double median;
-    private String label;
+    private double median = 0;
+    private String label = "Median";
 	private JTextField jtfMedian;
 
 	/*
@@ -15,7 +15,6 @@ public class MedianView implements View {
      */
 	public MedianView() {
         median = 0;
-        label = "Median";
 		jtfMedian = new JTextField(5);
 		jtfMedian.setEditable(false);
 	}
@@ -60,7 +59,7 @@ public class MedianView implements View {
 	/**
 	 * Return the median value.
 	 * 
-	 * @return median value of the numbers.
+	 * @return Median value of the numbers.
 	 */
 	public double getMedian() {
         return median;

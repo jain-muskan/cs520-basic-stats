@@ -5,8 +5,8 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 public class CountView implements View {
-    private double count;
-    private String label;
+    private double count = 0;
+    private String label = "Numbers";
 	private JTextField jtfCount;
 
     /*
@@ -14,7 +14,6 @@ public class CountView implements View {
      */
 	public CountView() {
         count = 0;
-        label = "Numbers";
 		jtfCount = new JTextField(5);
 		jtfCount.setEditable(false);
 	}
@@ -59,7 +58,7 @@ public class CountView implements View {
     /**
 	 * Return the count value.
 	 * 
-	 * @return count value of the numbers.
+	 * @return Count for the numbers.
 	 */
 	public double getCount() {
         return count;

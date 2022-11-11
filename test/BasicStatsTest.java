@@ -17,7 +17,6 @@ import model.BasicStatsModel;
 public class BasicStatsTest {
     private static double EPS = 1e-9;
 
-    //Check Initial configuration
     @Test
     public void testInitialNumbersViewConfiguration() {
       //Check initial numbers
@@ -284,7 +283,6 @@ public class BasicStatsTest {
       double[] numbers = {};
       double max = BasicStats.maximum(numbers);
     }
-    // reset
 
     @Test
     public void testCentralTendency() {
@@ -295,6 +293,17 @@ public class BasicStatsTest {
         assertEquals (3, median, EPS);
         double mode   = BasicStats.mode(numbers);
         assertEquals (3, mode, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMeanNullException() {
+      double max = BasicStats.mean(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMeanZeroLengthException() {
+      double[] numbers = {};
+      double max = BasicStats.mean(numbers);
     }
 
     @Test
@@ -315,11 +324,17 @@ public class BasicStatsTest {
       double[] numbers3 = {3};
       median = BasicStats.median(numbers3);
       assertEquals(3, median, EPS);
+    }
 
-      //Median should be 0 since size is 0
-      double[] numbers4 = {};
-      median = BasicStats.median(numbers4);
-      assertEquals(0, median, EPS);
+    @Test(expected = IllegalArgumentException.class)
+    public void testMedianNullException() {
+      double max = BasicStats.median(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMedianZeroLengthException() {
+      double[] numbers = {};
+      double max = BasicStats.median(numbers);
     }
 
     @Test
@@ -343,11 +358,17 @@ public class BasicStatsTest {
       double[] numbers4 = {7};
       mode   = BasicStats.mode(numbers4);
       assertEquals (7, mode, EPS);
+    }
 
-      //Mode should be 0
-      double[] numbers5 = {};
-      mode   = BasicStats.mode(numbers5);
-      assertEquals (0, mode, EPS);
+    @Test(expected = IllegalArgumentException.class)
+    public void testModeNullException() {
+      double max = BasicStats.mode(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testModeZeroLengthException() {
+      double[] numbers = {};
+      double max = BasicStats.mode(numbers);
     }
 
     @Test

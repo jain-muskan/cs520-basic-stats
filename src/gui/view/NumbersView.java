@@ -5,14 +5,13 @@ import javax.swing.JTextArea;
 import javax.swing.text.JTextComponent;
 
 public class NumbersView implements View {
-    private String label;
+    private String label = "";
 	private JTextArea jtaNumbers;
 
     /*
      * Create a simple gui for the NumbersView and do basic initialization.
      */
 	public NumbersView() {
-        label = "";
 		jtaNumbers = new JTextArea(10,50);
 	    jtaNumbers.setEditable(false);
 	}

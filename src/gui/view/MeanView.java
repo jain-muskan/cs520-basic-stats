@@ -6,16 +6,15 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 public class MeanView implements View {
-	private double mean;
-    private String label;
+	private double mean = 0;
+    private String label = "Mean";
 	private JTextField jtfMean;
 
     /*
      * Create a simple gui for the MeanView and do basic initialization.
      */
 	public MeanView() {
-        mean = 0.0;
-        label = "Mean";
+        mean = 0;
 		jtfMean = new JTextField(5);
 		jtfMean.setEditable(false);
 	}
@@ -60,7 +59,7 @@ public class MeanView implements View {
     /**
 	 * Return the mean value.
 	 * 
-	 * @return mean value of the numbers.
+	 * @return Mean value of the numbers.
 	 */
 	public double getMean() {
         return mean;
